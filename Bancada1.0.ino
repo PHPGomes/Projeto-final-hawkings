@@ -38,7 +38,7 @@ void loop() {
     lcd.print(correnteFinal); // imprime a corrente na tela
 
     lcd.print("W:");
-    lcd.print("medsc");
+    lcd.print(medsc);
 
     lcd.setCursor(0,1);//muda para linha inferior do lcd
     
