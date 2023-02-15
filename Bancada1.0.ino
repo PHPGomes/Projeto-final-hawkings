@@ -40,10 +40,9 @@ void loop() {
 
     medsc = DFRobot_HX711_I2C.readWheight(6); // define medsc como a leitura do sensor de carga
     //medidor.calcVI(20,200) // Calcula a Potência (V*I) (20 semiciclos / tempo limite para fazer a medição)
-    double correnteFinal = medidor.Irms; // A variável "correnteFinal" recebe o valor da corrente em RMS
-    tensao = Porcentagem_Potenciometro * 200;// Mudar valor da resistencia
-                            
+    double correnteFinal = medidor.Irms; // A variável "correnteFinal" recebe o valor da corrente em RMS                    
     potenciometro_esc();
+    tensao = Porcentagem_Potenciometro * 200;// Mudar valor da resistencia
     
     lcd.print("A: ");
     lcd.print(correnteFinal); // imprime a corrente na tela
