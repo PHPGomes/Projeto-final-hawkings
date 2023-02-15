@@ -40,8 +40,7 @@ void loop() {
 <<<<<<< HEAD
    
     //medidor.calcVI(20,200) // Calcula a Potência (V*I) (20 semiciclos / tempo limite para fazer a medição)
-=======
-    medidor.calcVI(20,200) // Calcula a Potência (V*I) (20 semiciclos / tempo limite para fazer a medição)
+
 >>>>>>> f2a1fb66d06a32bac91cb6d51cdbda768fb565b2
     double correnteFinal = medidor.Irms; // A variável "correnteFinal" recebe o valor da corrente em RMS
     tensao = medirTensao(); // Mede a tensão do sistema. De a cordo com o pedro tem jeito do arduino ler a resistencia do potenciometro,
