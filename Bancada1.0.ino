@@ -39,7 +39,7 @@ void loop() {
     
 
     medsc = DFRobot_HX711_I2C.readWheight(6); // define medsc como a leitura do sensor de carga
-    medidor.calcVI(20,200) // Calcula a Potência (V*I) (20 semiciclos / tempo limite para fazer a medição)
+    //medidor.calcVI(20,200) // Calcula a Potência (V*I) (20 semiciclos / tempo limite para fazer a medição)
     double correnteFinal = medidor.Irms; // A variável "correnteFinal" recebe o valor da corrente em RMS
     tensao = medirTensao(); // Mede a tensão do sistema. De a cordo com o pedro tem jeito do arduino ler a resistencia do potenciometro,
                             // se nao tiver sempre tem como fazer uma regra de três
