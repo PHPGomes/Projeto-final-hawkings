@@ -9,8 +9,8 @@ const int RPMV = 1000 // Constante RMP/V do motor. Valor exemplo tem que ver com
 const int pinoSensor = A2; // Entrada Analógica 2 do Arduino
 EnergyMonitor medidor; // Declaração de variável da Classe EnergyMonitor
 
-LiquidCrystal lcd(12, 11, 5, 4, 3, 2);//definição das portas de conexao do lcd tem qu e conferir com o pessoal do hardware 
-
+LiquidCrystal lcd(11, 9, 4, 5, 6, 13);//definição das portas de conexao do lcd 
+//Portas na Documentacao
 void setup() {
     DFRobot_HX711_I2C.begin(); //inicia o sensor de carga
     DFRobot_HX711_I2C.getCalibration(); //calibra o sensor de carga
@@ -28,11 +28,6 @@ void loop() {
     double correnteFinal = medidor.Irms; // A variável "correnteFinal" recebe o valor da corrente em RMS
     tensao = medirTensao(); // Mede a tensão do sistema. De a cordo com o pedro tem jeito do arduino ler a resistencia do potenciometro,
                             // se nao tiver sempre tem como fazer uma regra de três
-    
-    /*Serial.print("Corrente Medida: ");
-    Serial.print(correnteFinal);
-    Serial.print("A");*/
-
     lcd.print("A: ");
     lcd.print(correnteFinal); // imprime a corrente na tela
 
@@ -43,4 +38,7 @@ void loop() {
     
     lcd.print("RPM: ");
     lcd.print(RPMV*tensao)
+
+    delay(2000);//Ajustar delay ideal
+
 }
