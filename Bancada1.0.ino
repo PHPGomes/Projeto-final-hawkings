@@ -4,6 +4,7 @@
 
 float medsc;
 float tensao;
+float Porcentagem_Potenciometro;
 #define correnteCalibracao 18.40 // Valor de Calibração do Sensor 
 #define potenciometro A0
 #define esc 5
@@ -28,21 +29,17 @@ void setup() {
 }
 
 void potenciometro_esc(){
-    int Nivel_potenciometro = analogRead(potenciometro);
-    int Nivel_esc = Nivel_potenciometro * 0.1749755620;
-    analogWrite(esc,Nivel_esc);
+    int Nivel_potenciometro = analogRead(potenciometro); // leitura analogica potenciômetro
+    int Nivel_esc = Nivel_potenciometro * 0.1749755620; //conversor do potenciometro para o esc (valor entre 0 e 1023, para um valor entre 0 e 179)
+    Porcentagem_Potenciometro = (Nivel_potenciometro/1023)*100; //Porcentagem de acionamento do potenciômetro
+    analogWrite(esc,Nivel_esc); // acionamento esc
 }
 
 void loop() {
     
 
     medsc = DFRobot_HX711_I2C.readWheight(6); // define medsc como a leitura do sensor de carga
-<<<<<<< HEAD
-   
-    //medidor.calcVI(20,200) // Calcula a Potência (V*I) (20 semiciclos / tempo limite para fazer a medição)
-=======
     medidor.calcVI(20,200) // Calcula a Potência (V*I) (20 semiciclos / tempo limite para fazer a medição)
->>>>>>> f2a1fb66d06a32bac91cb6d51cdbda768fb565b2
     double correnteFinal = medidor.Irms; // A variável "correnteFinal" recebe o valor da corrente em RMS
     tensao = medirTensao(); // Mede a tensão do sistema. De a cordo com o pedro tem jeito do arduino ler a resistencia do potenciometro,
                             // se nao tiver sempre tem como fazer uma regra de três
@@ -59,6 +56,10 @@ void loop() {
     
     lcd.print("RPM: ");
     lcd.print(RPMV*tensao)
+
+    
+    lcd.print(Porcentagem_Potenciometro);
+    lcd.print("%: ");
     
 
     delay(2000);//Ajustar delay ideal
