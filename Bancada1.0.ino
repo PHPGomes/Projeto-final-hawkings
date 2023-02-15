@@ -5,6 +5,8 @@
 float medsc;
 float tensao;
 #define correnteCalibracao 18.40 // Valor de Calibração do Sensor 
+#define potenciometro A0
+#define esc 5
 const int RPMV = 1000 // Constante RMP/V do motor. Valor exemplo tem que ver com a mecanica o RPM/V do motor
 const int pinoSensor = A2; // Entrada Analógica 2 do Arduino
 EnergyMonitor medidor; // Declaração de variável da Classe EnergyMonitor
@@ -20,14 +22,28 @@ void setup() {
 
     lcd.begin(16, 2);//proporcao do lcd em linhas e colunas respectivamente(inicia o lcd)
 
+    pinMode(potenciometro, INPUT);
+    pinMode(esc,OUTPUT);
+
+}
+
+void potenciometro_esc(){
+    int Nivel_potenciometro = analogRead(potenciometro);
+    int Nivel_esc = Nivel_potenciometro * 0.1749755620;
+    digitalWrite(esc,Nivel_esc);
 }
 
 void loop() {
+    
+
     medsc = DFRobot_HX711_I2C.readWheight(6); // define medsc como a leitura do sensor de carga
     medidor.calcVI(20,200) // Calcula a Potência (V*I) (20 semiciclos / tempo limite para fazer a medição)
     double correnteFinal = medidor.Irms; // A variável "correnteFinal" recebe o valor da corrente em RMS
     tensao = medirTensao(); // Mede a tensão do sistema. De a cordo com o pedro tem jeito do arduino ler a resistencia do potenciometro,
                             // se nao tiver sempre tem como fazer uma regra de três
+    
+    potenciometro_esc();
+    
     lcd.print("A: ");
     lcd.print(correnteFinal); // imprime a corrente na tela
 
@@ -38,6 +54,7 @@ void loop() {
     
     lcd.print("RPM: ");
     lcd.print(RPMV*tensao)
+    
 
     delay(2000);//Ajustar delay ideal
 
