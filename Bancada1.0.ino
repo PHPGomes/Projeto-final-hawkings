@@ -43,7 +43,7 @@ void loop() {
     double correnteFinal = medidor.Irms; // A variável "correnteFinal" recebe o valor da corrente em RMS
     tensao = medirTensao(); // Mede a tensão do sistema. De a cordo com o pedro tem jeito do arduino ler a resistencia do potenciometro,
                             // se nao tiver sempre tem como fazer uma regra de três
-    
+                            
     potenciometro_esc();
     
     lcd.print("A: ");
