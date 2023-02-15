@@ -30,7 +30,7 @@ void setup() {
 void potenciometro_esc(){
     int Nivel_potenciometro = analogRead(potenciometro);
     int Nivel_esc = Nivel_potenciometro * 0.1749755620;
-    digitalWrite(esc,Nivel_esc);
+    analogWrite(esc,Nivel_esc);
 }
 
 void loop() {
