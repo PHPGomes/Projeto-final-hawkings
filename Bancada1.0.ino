@@ -53,7 +53,7 @@ void loop() {
   
     double correnteFinal = medidor.Irms; // A variável "correnteFinal" recebe o valor da corrente em RMS                    
     potenciometro_esc();
-    tensao = Porcentagem_Potenciometro * 10000;// Mudar valor da resistencia
+    tensao = correnteFinal * (Porcentagem_Potenciometro * 10000);// Acha a tensão no circuito
     
     Serial.print("A: ");
     Serial.println(correnteFinal); // imprime a corrente na tela
