@@ -43,7 +43,7 @@ void setup() {
 void potenciometro_esc(){
     int Nivel_potenciometro = analogRead(A0); // leitura analogica potenciômetro
     int Nivel_esc = Nivel_potenciometro * 0.1749755620; //conversor do potenciometro para o esc (valor entre 0 e 1023, para um valor entre 0 e 179)
-    Porcentagem_Potenciometro = (Nivel_potenciometro/1023)*100; //Porcentagem de acionamento do potenciômetro
+    Porcentagem_Potenciometro = (Nivel_potenciometro/1023.0)*100; //Porcentagem de acionamento do potenciômetro
     analogWrite(esc,Nivel_esc); // acionamento esc
 }
 
