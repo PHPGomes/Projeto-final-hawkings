@@ -61,7 +61,7 @@ void loop() {
     Serial.print("W: ");
     Serial.println(medsc);//Sensor de Carga
 
-    //Serial.setCursor(0,1);//muda para linha inferior do lcd
+    //led.setCursor(0,1);//muda para linha inferior do lcd
     //troca tudo Serial para LCD para funcionar o lcd
     Serial.print("RPM: ");
     Serial.println(RPMV*tensao);
